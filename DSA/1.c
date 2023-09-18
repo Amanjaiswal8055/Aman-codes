@@ -1,118 +1,64 @@
 #include <stdio.h>
-#include <stdlib.h>
+#define R 4
+#define C 5
 
-struct node
+void spiralOfMatrix(int row, int col, int arr1[R][C])
 {
-    int data;
-    struct node *next;
-} *head;
+    int i, r = 0, c = 0;
+    while (r < row && c < col)
+    {
+        for (i = c; i < col; ++i)
+        {
+            printf("%d ", arr1[r][i]);
+        }
+        r++;
 
-void createList(int n);
-void insertNodeAtBeginning(int data);
-void displayList();
+        for (i = r; i < row; ++i)
+        {
+            printf("%d ", arr1[i][col - 1]);
+        }
+        col--;
 
+        if (r < row)
+        {
+            for (i = col - 1; i >= c; --i)
+            {
+                printf("%d ", arr1[row - 1][i]);
+            }
+            row--;
+        }
+
+        if (c < col)
+        {
+            for (i = row - 1; i >= r; --i)
+            {
+                printf("%d ", arr1[i][c]);
+            }
+            c++;
+        }
+    }
+}
 int main()
 {
-    int n, data;
+    int i, j;
+    int arr1[R][C] = {{1, 2, 3, 4, 5},
+                      {1, 2, 3, 4, 5},
+                      {1, 2, 3, 4, 5},
+                      {1, 2, 3, 4, 5}};
+    //------------- print original array ------------------
+    printf("The given array in matrix form is :  \n");
+    for (i = 0; i < R; i++)
+    {
+        for (j = 0; j < C; j++)
+        {
+            printf("%d  ", arr1[i][j]);
+        }
+        printf("\n");
+    }
+    printf("------------------------------------------------------\n");
+    printf("The spiral form of above matrix is: \n");
 
-    printf("Enter the total number of nodes: ");
-    scanf("%d", &n);
-    createList(n);
-
-    printf("\nData in the list \n");
-    displayList();
-
-    printf("\nEnter data to insert at beginning of the list: ");
-    scanf("%d", &data);
-    insertNodeAtBeginning(data);
-
-    printf("\nData in the list \n");
-    displayList();
+    spiralOfMatrix(R, C, arr1);
 
     return 0;
-}
-
-void createList(int n)
-{
-    struct node *newNode, *temp;
-    int data, i;
-
-    head = (struct node *)malloc(sizeof(struct node));
-    if (head == NULL)
-    {
-        printf("Unable to allocate memory.");
-    }
-    else
-    {
-        printf("Enter the data of node 1: ");
-        scanf("%d", &data);
-
-        head->data = data;
-        head->next = NULL;
-
-        temp = head;
-
-        for (i = 2; i <= n; i++)
-        {
-            newNode = (struct node *)malloc(sizeof(struct node));
-
-            if (newNode == NULL)
-            {
-                printf("Unable to allocate memory.");
-                break;
-            }
-            else
-            {
-                printf("Enter the data of node %d: ", i);
-                scanf("%d", &data);
-
-                newNode->data = data;
-                newNode->next = NULL;
-
-                temp->next = newNode;
-                temp = temp->next;
-            }
-        }
-        printf("SINGLY LINKED LIST CREATED SUCCESSFULLY\n");
-    }
-}
-
-void insertNodeAtBeginning(int data)
-{
-    struct node *newNode;
-
-    newNode = (struct node *)malloc(sizeof(struct node));
-
-    if (newNode == NULL)
-    {
-        printf("Unable to allocate memory.");
-    }
-    else
-    {
-        newNode->data = data;
-        newNode->next = head;
-
-        head = newNode;
-
-        printf("DATA INSERTED SUCCESSFULLY\n");
-    }
-}
-
-void displayList()
-{
-    struct node *temp;
-
-    if (head == NULL)
-    {
-        printf("List is empty.");
-    }
-    else
-    {
-        temp = head;
-        while (temp != NULL)
-        {
-            printf("Data = %d\n", temp->data);
-            temp = temp->next;
-        }
-    }
 }
