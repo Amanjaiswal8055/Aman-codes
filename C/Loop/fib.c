@@ -11,9 +11,9 @@ int main()
 
     for (i = 1; i <= n; ++i)
     {
+        fib = t1 + t2;
         t1 = t2;
         t2 = fib;
-        fib = t1 + t2;
         printf("fib of %d is %d\n", i, fib);
     }
     return 0;

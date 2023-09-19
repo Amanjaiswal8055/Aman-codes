@@ -42,9 +42,9 @@ int main()
 {
     int i, j;
     int arr1[R][C] = {{1, 2, 3, 4, 5},
-                      {1, 2, 3, 4, 5},
-                      {1, 2, 3, 4, 5},
-                      {1, 2, 3, 4, 5}};
+                      {14, 15, 16, 17, 6},
+                      {13, 20, 19, 18, 7},
+                      {12, 11, 10, 9, 8}};
     //------------- print original array ------------------
     printf("The given array in matrix form is :  \n");
     for (i = 0; i < R; i++)

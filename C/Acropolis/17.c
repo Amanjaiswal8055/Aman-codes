@@ -1,26 +1,57 @@
-#include<stdio.h>
+#include <stdio.h>
 
 int main()
 {
-    int a,b,c;
+    int a, b, c, temp;
+    int big, med, small;
 
     printf("Enter three number\n");
-    scanf("%d%d%d",&a,&b,&c);
+    scanf("%d %d %d", &a, &b, &c);
 
     if (a > b && a > c)
     {
-        printf("a is maximum");
+        big = a;
+        if (b > c)
+        {
+            med = b;
+            small = c;
+        }
+        else
+        {
+            med = c;
+            small = b;
+        }
     }
-
-    else if (a < b && b > c)
+    else if (b > a && b > c)
     {
-        printf("b is maximum");
+        big = b;
+        if (a > c)
+        {
+            med = a;
+            small = c;
+        }
+        else
+        {
+            med = c;
+            small = a;
+        }
     }
-    
     else
     {
-        printf("c is maximum");
+        big = c;
+        if (a > b)
+        {
+            med = a;
+            small = b;
+        }
+        else
+        {
+            med = b;
+            small = a;
+        }
     }
+
+    printf("Large = %d\nMedium = %d\nSmall = %d\n",big,med,small);
 
     return 0;
 }
