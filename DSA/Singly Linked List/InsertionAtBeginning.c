@@ -7,6 +7,7 @@ struct node
     struct node *next;
 } *head;
 
+
 void createlist(int n)
 {
     struct node *newnode, *temp;
@@ -26,7 +27,7 @@ void createlist(int n)
         head->next = NULL;
         temp = head;
 
-        for (int i = 1; i <= n; i++)
+        for (int i = 2; i <= n; i++)
         {
             newnode = (struct node *)malloc(sizeof(struct node));
 
@@ -37,7 +38,7 @@ void createlist(int n)
             }
             else
             {
-                printf("Enter the date of node %d\n", i);
+                printf("Enter the data of node %d\n", i);
                 scanf("%d", &data);
                 newnode->data = data;
                 newnode->next = NULL;
@@ -52,7 +53,9 @@ void createlist(int n)
 void insertNodeAtBeginnning(int data)
 {
     struct node *newnode;
+
     newnode = (struct node *)malloc(sizeof(struct node));
+
     if (newnode == NULL)
     {
         printf("Unable to allocate memory\n");
@@ -83,6 +86,8 @@ void displaylist()
         }
     }
 }
+
+
 int main()
 {
     int n, data;
@@ -101,7 +106,7 @@ int main()
 
     insertNodeAtBeginnning(data);
 
-    printf("Data in the lis\nt");
+    printf("Data in the list\n");
     displaylist();
 
     return 0;

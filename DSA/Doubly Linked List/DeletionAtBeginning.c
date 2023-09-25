@@ -3,8 +3,8 @@
 
 struct node
 {
-    int data;
     struct node *prev;
+    int data;
     struct node *next;
 } *head;
 
@@ -16,7 +16,7 @@ int main()
 {
     int n;
 
-    printf("Enter the total number of nodes\n");
+    printf("Enter the total number of nodes :  " );
     scanf("%d", &n);
 
     createlist(n);
@@ -47,7 +47,7 @@ void createlist(int n)
     }
     else
     {
-        printf("Enter the data of node 1\n");
+        printf("Enter the data of node 1 :   ");
         scanf("%d", &data);
 
         head->prev = NULL;
@@ -64,7 +64,7 @@ void createlist(int n)
             }
             else
             {
-                printf("Enter the data of node %d\n", i);
+                printf("Enter the data of node %d :   ", i);
                 scanf("%d", &data);
 
                 newnode->data = data;
@@ -99,7 +99,7 @@ void deleteNodeAtBeginning()
 
 void displayList(int n)
 {
-    struct node *temp, *end;
+    struct node *temp, *endnode;
     if (head == NULL)
     {
         printf("List is empty\n");
@@ -114,17 +114,17 @@ void displayList(int n)
             printf("%d\t", temp->data);
             if (temp->next == NULL)
             {
-                end = temp;
+                endnode = temp;
             }
             temp = temp->next;
         }
         printf("\n");
 
         printf("Data in the list in reverse direction:\n");
-        while (end != NULL)
+        while (endnode != NULL)
         {
-            printf("%d\t", end->data);
-            end = end->prev;
+            printf("%d\t", endnode->data);
+            endnode = endnode->prev;
         }
     }
     printf("\n");

@@ -1,47 +1,105 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node
+struct node
 {
     int data;
     struct node *next;
-} snode;
+} *head;
 
-void transverse(snode *start)
+
+void createlist(int n)
 {
-    while (start != NULL)
+    struct node *newnode, *temp;
+    int data;
+
+    head = (struct node *)malloc(sizeof(struct node));
+
+    if (head == NULL)
     {
-        printf("Element is %d\n", start->data);
-        start = start->next;
+        printf("Unable to allocate memory.\n");
+    }
+    else
+    {
+        printf("Enter the data of head node\n");
+        scanf("%d", &data);
+        head->data = data;
+        head->next = NULL;
+        temp = head;
+
+        for (int i = 2; i <= n; i++)
+        {
+            newnode = (struct node *)malloc(sizeof(struct node));
+
+            if (newnode == NULL)
+            {
+                printf("Unable to allocate memory.\n");
+                break;
+            }
+            else
+            {
+                printf("Enter the data of node %d\n", i);
+                scanf("%d", &data);
+                newnode->data = data;
+                newnode->next = NULL;
+                temp->next = newnode;
+                temp = temp->next;
+            }
+        }
+        printf("Singly linked list created successfully\n");
     }
 }
 
+void insertNodeAtBeginnning(int data)
+{
+    struct node *newnode;
+
+    newnode = (struct node *)malloc(sizeof(struct node));
+
+    if (newnode == NULL)
+    {
+        printf("Unable to allocate memory\n");
+    }
+    else
+    {
+        newnode->data = data;
+        newnode->next = head;
+        head = newnode;
+        printf("Data inserted successfully\n");
+    }
+}
+
+void displaylist()
+{
+    struct node *temp;
+    if (head == NULL)
+    {
+        printf("List is empty\n");
+    }
+    else
+    {
+        temp = head;
+        while (temp != NULL)
+        {
+            printf("Data = %d\n", temp->data);
+            temp = temp->next;
+        }
+    }
+}
+
+
 int main()
 {
-    snode *first, *second, *third, *fourth, *fifth, *start;
+    int n, data;
 
-    first = (snode *)malloc(sizeof(struct node));
-    second = (snode *)malloc(sizeof(struct node));
-    third = (snode *)malloc(sizeof(struct node));
-    fourth = (snode *)malloc(sizeof(struct node));
-    fifth = (snode *)malloc(sizeof(struct node));
+    printf("Enter the total number of nodes\n");
+    scanf("%d", &n);
 
-    first->data = 6;
-    first->next = second;
+    createlist(n);
 
-    second->data = 133;
-    second->next = third;
+    printf("You entered total number of data in list are as follows\n");
 
-    third->data = 154;
-    third->next = fourth;
+    displaylist();
 
-    fourth->data = 15456;
-    fourth->next = fifth;
-
-    fifth->data = 158899996;
-    fifth->next = NULL;
-
-    start = first;
-
-    transverse(start);
+    return 0;
 }

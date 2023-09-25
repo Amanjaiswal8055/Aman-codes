@@ -12,7 +12,7 @@ int main()
     {
         out = out * num;
     }
-    printf("%d",out);
+    printf("factorial of %d\n",out);
 
     return 0;
 }

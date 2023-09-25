@@ -9,7 +9,7 @@ int main()
 
     int m = (num - 1);
 
-    for (int row = 11; row <= num; row++)
+    for (int row = 1; row <= num; row++)
     {
         for (int space = 0; space < (m); space++)
         {

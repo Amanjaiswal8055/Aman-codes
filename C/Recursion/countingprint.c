@@ -19,8 +19,8 @@ void sum(int n)
 {
     if (n != 0)
     {
-        // sum(n - 1);           //counting print
+        sum(n - 1);           //counting print
         printf("%d\n", n);
-        sum(n - 1); // reverse print
+        // sum(n - 1); // reverse print
     }
 }

@@ -3,8 +3,8 @@
 
 struct node
 {
-    int data;
     struct node *prev;
+    int data;
     struct node *next;
 } *head;
 
@@ -16,16 +16,15 @@ int main()
 {
     int n;
 
-    printf("Enter the total number of nodes\n");
+    printf("Enter the total number of nodes :  ");
     scanf("%d", &n);
 
     createlist(n);
 
-    printf("\nList before deleting end node\n");
-    displayList(n);
+    // printf("\nList before deleting end node\n");
+    // displayList(n);
 
     deleteNodeAtEnd();
-    // n--;
 
     printf("\nList after deleting end node\n");
 
@@ -47,7 +46,7 @@ void createlist(int n)
     }
     else
     {
-        printf("Enter the data of node 1\n");
+        printf("Enter the data of node 1 :  ");
         scanf("%d", &data);
 
         head->prev = NULL;
@@ -64,7 +63,7 @@ void createlist(int n)
             }
             else
             {
-                printf("Enter the data of node %d\n", i);
+                printf("Enter the data of node %d :  ", i);
                 scanf("%d", &data);
 
                 newnode->data = data;
@@ -74,13 +73,13 @@ void createlist(int n)
                 temp = temp->next;
             }
         }
-        printf("Doubly linked list created successfully\n");
+        printf("\nDoubly linked list created successfully\n");
     }
 }
 
 void deleteNodeAtEnd()
 {
-    struct node *temp, *prev;
+    struct node *temp, *prevnode;
 
     if (head == NULL)
     {
@@ -93,11 +92,11 @@ void deleteNodeAtEnd()
         {
             if (temp->next == NULL)
             {
-                prev = temp->prev;
+                prevnode = temp->prev;
             }
             temp = temp->next;
         }
-        prev->next = NULL;
+        prevnode->next = NULL;
         free(temp);
 
         printf("\nEnd node deleted successfully\n");
