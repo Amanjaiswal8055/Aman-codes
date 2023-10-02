@@ -1,64 +1,57 @@
 #include <stdio.h>
-#define R 4
-#define C 5
+int MAXSIZE = 8;
+int stack[8];
+int top = -1;
 
-void spiralOfMatrix(int row, int col, int arr1[R][C])
+int peek()
 {
-    int i, r = 0, c = 0;
-    while (r < row && c < col)
+    return stack[top];
+}
+
+int pop()
+{
+    int data;
+    if (!isempty())
     {
-        for (i = c; i < col; ++i)
-        {
-            printf("%d ", arr1[r][i]);
-        }
-        r++;
-
-        for (i = r; i < row; ++i)
-        {
-            printf("%d ", arr1[i][col - 1]);
-        }
-        col--;
-
-        if (r < row)
-        {
-            for (i = col - 1; i >= c; --i)
-            {
-                printf("%d ", arr1[row - 1][i]);
-            }
-            row--;
-        }
-
-        if (c < col)
-        {
-            for (i = row - 1; i >= r; --i)
-            {
-                printf("%d ", arr1[i][c]);
-            }
-            c++;
-        }
+        data = stack[top];
+        top = top - 1;
+        return data;
+    }
+    else
+    {
+        printf("Could not retrieve data, Stack is empty.\n");
     }
 }
+
+int push(int data)
+{
+    if (!isfull())
+    {
+        top = top + 1;
+        stack[top] = data;
+    }
+    else
+    {
+        printf("Could not insert data, Stack is full.\n");
+    }
+}
+
 int main()
 {
-    int i, j;
-    int arr1[R][C] = {{1, 2, 3, 4, 5},
-                      {14, 15, 16, 17, 6},
-                      {13, 20, 19, 18, 7},
-                      {12, 11, 10, 9, 8}};
-    //------------- print original array ------------------
-    printf("The given array in matrix form is :  \n");
-    for (i = 0; i < R; i++)
+
+    push(44);
+    push(10);
+    push(62);
+    push(123);
+    push(15);
+    printf("Element at top of the stack: %d\n", peek());
+    printf("Elements: \n");
+
+    while (!isempty())
     {
-        for (j = 0; j < C; j++)
-        {
-            printf("%d  ", arr1[i][j]);
-        }
-        printf("\n");
+        int data = pop();
+        printf("%d\n", data);
     }
-    printf("------------------------------------------------------\n");
-    printf("The spiral form of above matrix is: \n");
-
-    spiralOfMatrix(R, C, arr1);
-
     return 0;
 }
+

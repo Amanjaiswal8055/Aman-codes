@@ -7,6 +7,57 @@ struct node
     struct node *next;
 } *head;
 
+void displaylist();
+void createlist(int n);
+void insertNodeAtBeginnning();
+void insertNodeAtEnd();
+void DeleteNodeAtBeginnning();
+
+int main()
+{
+    int n, data, choice;
+
+    printf("Enter the total number of nodes\n");
+    scanf("%d", &n);
+
+    createlist(n);
+
+    printf("You entered total number of data in list are as follows\n");
+    displaylist();
+
+    while (1)
+    {
+        printf("Press\n1.For insertion at beginning.\n2.For insertion at end.\n3.For deletion at beginning.\n4.For deletion at end\n5.To exit.\n");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+        case 1:
+            insertNodeAtBeginnning();
+            break;
+
+        case 2:
+            insertNodeAtEnd();
+            break;
+
+        case 3:
+            DeleteNodeAtBeginnning();
+            break;
+
+        case 5:
+            displaylist();
+            exit(0);
+
+        default:
+            break;
+        }
+    }
+
+    printf("After operation the list is : \n");
+    displaylist();
+
+    return 0;
+}
 
 void createlist(int n)
 {
@@ -50,25 +101,6 @@ void createlist(int n)
     }
 }
 
-void insertNodeAtBeginnning(int data)
-{
-    struct node *newnode;
-
-    newnode = (struct node *)malloc(sizeof(struct node));
-
-    if (newnode == NULL)
-    {
-        printf("Unable to allocate memory\n");
-    }
-    else
-    {
-        newnode->data = data;
-        newnode->next = head;
-        head = newnode;
-        printf("Data inserted successfully\n");
-    }
-}
-
 void displaylist()
 {
     struct node *temp;
@@ -87,19 +119,78 @@ void displaylist()
     }
 }
 
-
-int main()
+void insertNodeAtBeginnning()
 {
-    int n, data;
+    struct node *newnode;
+    int data;
 
-    printf("Enter the total number of nodes\n");
-    scanf("%d", &n);
+    printf("Enter data you want to insert at beginning\n");
+    scanf("%d", &data);
 
-    createlist(n);
+    newnode = (struct node *)malloc(sizeof(struct node));
 
-    printf("You entered total number of data in list are as follows\n");
+    if (newnode == NULL)
+    {
+        printf("Unable to allocate memory\n");
+    }
+    else
+    {
+        newnode->data = data;
+        newnode->next = head;
+        head = newnode;
+        printf("Data inserted successfully\n");
+    }
+}
 
-    displaylist();
+void insertNodeAtEnd()
+{
+    struct node *newnode, *temp;
+    int data;
 
-    return 0;
+    printf("Enter data you want to insert at end\n");
+    scanf("%d", &data);
+
+    newnode = (struct node *)malloc(sizeof(struct node));
+
+    if (newnode == NULL)
+    {
+        printf("Unable to allocate memory\n");
+    }
+    else
+    {
+        newnode->data = data;
+        newnode->next = NULL;
+        if (head == NULL)
+        {
+            head = newnode;
+        }
+        else
+        {
+            temp = head;
+            while (temp->next != NULL)
+            {
+                temp = temp->next;
+            }
+            temp->next = newnode;
+        }
+        printf("Data inserted successfully\n");
+    }
+}
+
+void DeleteNodeAtBeginnning()
+{
+    struct node *temp, *new;
+
+    if (head == NULL)
+    {
+        printf("List is empty\n");
+    }
+    else
+    {
+        temp = head->next;
+        free(head);
+        head = temp;
+
+        printf("Data deleted successfully\n");
+    }
 }

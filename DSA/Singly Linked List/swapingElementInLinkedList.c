@@ -7,33 +7,6 @@ struct node
     struct node *next;
 } *head;
 
-void createlist(int n);
-void displaylist();
-void DeleteNodeAtBeginnning();
-
-int main()
-{
-    int n, data;
-
-    printf("Enter the total number of nodes\n");
-    scanf("%d", &n);
-
-    createlist(n);
-
-    printf("You entered total number of data in list are as follows\n");
-
-    displaylist();
-
-    DeleteNodeAtBeginnning();
-
-    printf("Data in the list\n");
-    displaylist();
-
-    return 0;
-}
-
-
-
 void createlist(int n)
 {
     struct node *newnode, *temp;
@@ -76,6 +49,45 @@ void createlist(int n)
     }
 }
 
+void swapping(int index)
+{
+    int number1, number2, total = 0;
+    struct node *temp;
+
+    temp = head;
+    while (temp != NULL)
+    {
+        temp = temp->next;
+        total++;
+    }
+    printf("Total nodes = %d\n", total - 1);
+
+    temp = head;
+    for (int i = 0; i < total; i++)
+    {
+        if (i == index - 1)
+        {
+            number1 = temp->data;
+        }
+        if (i == total - index)
+        {
+            number2 = temp->data;
+            temp->data = number1;
+        }
+        temp = temp->next;
+    }
+
+    temp = head;
+    for (int i = 0; i < total; i++)
+    {
+        if (i == index - 1)
+        {
+            temp->data = number2;
+        }
+        temp = temp->next;
+    }
+}
+
 void displaylist()
 {
     struct node *temp;
@@ -94,21 +106,26 @@ void displaylist()
     }
 }
 
-void DeleteNodeAtBeginnning()
+int main()
 {
-    struct node *temp, *new;
+    int n, index, data;
 
-    if (head == NULL)
-    {
-        printf("List is empty\n");
-    }
-    else
-    {
-        temp = head->next;
-        free(head);
-        head = temp;
+    printf("Enter the total number of nodes\n");
+    scanf("%d", &n);
 
-        printf("Data deleted successfully\n");
-    }
+    createlist(n);
+
+    printf("You entered total number of data in list are as follows\n");
+
+    displaylist();
+
+    printf("Enter index want to swap\n");
+    scanf("%d", &index);
+
+    swapping(index);
+
+    printf("Data in the list\n");
+    displaylist();
+
+    return 0;
 }
-

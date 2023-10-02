@@ -12,6 +12,7 @@ int main()
 
     int arr1[row1][column1];
     int arr2[row2][column2];
+
     int arr3[row1][column2];
 
     if (column1 != row2)
@@ -60,7 +61,6 @@ int main()
         printf("\n");
     }
 
-    printf("++++++++++The size of new matrix is %d X %d++++++++++\n", row1, column2);
     for (int i = 0; i < row1; i++)
     {
         for (int j = 0; j < column2; j++)
@@ -68,11 +68,12 @@ int main()
             arr3[i][j] = 0;
             for (int k = 0; k < row2; k++)
             {
-                arr3[i][j] = arr3[i][j] + arr1[i][k] * arr2[k][j];
+                arr3[i][j] += arr1[i][k] * arr2[k][j];
             }
         }
     }
 
+    printf("++++++++++The size of new matrix is %d X %d++++++++++\n", row1, column2);
     for (int i = 0; i < row1; i++)
     {
         for (int j = 0; j < column2; j++)
@@ -83,4 +84,5 @@ int main()
     }
 
     return 0;
+    
 }

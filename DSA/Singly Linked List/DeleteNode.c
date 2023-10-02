@@ -9,7 +9,7 @@ struct node
 
 void createlist(int n);
 void displaylist();
-void DeleteNodeAtBeginnning();
+void DeleteNode(int);
 
 int main()
 {
@@ -24,15 +24,13 @@ int main()
 
     displaylist();
 
-    DeleteNodeAtBeginnning();
+    DeleteNode(3);
 
     printf("Data in the list\n");
     displaylist();
 
     return 0;
 }
-
-
 
 void createlist(int n)
 {
@@ -94,21 +92,27 @@ void displaylist()
     }
 }
 
-void DeleteNodeAtBeginnning()
+void DeleteNode(int tar)
 {
-    struct node *temp, *new;
+    struct node *ptr, *preptr, *temp;
 
-    if (head == NULL)
-    {
-        printf("List is empty\n");
-    }
-    else
-    {
-        temp = head->next;
-        free(head);
-        head = temp;
+    ptr = head;
+    preptr = ptr;
 
-        printf("Data deleted successfully\n");
+    while (ptr != NULL)
+    {
+        if (ptr->data == tar)
+        {
+            preptr->next = ptr->next;
+            free(ptr);
+            ptr = preptr->next;
+        }
+
+        preptr = ptr;
+        ptr = ptr->next;
+
+        printf("aa\n");
     }
 }
+
 
