@@ -12,6 +12,7 @@ void createlist(int n);
 void insertNodeAtBeginnning();
 void insertNodeAtEnd();
 void DeleteNodeAtBeginnning();
+void arranging();
 
 int main()
 {
@@ -27,7 +28,7 @@ int main()
 
     while (1)
     {
-        printf("Press\n1.For insertion at beginning.\n2.For insertion at end.\n3.For deletion at beginning.\n4.For deletion at end\n5.To exit.\n");
+        printf("Press\n1.For insertion at beginning.\n2.For insertion at end.\n3.For deletion at beginning.\n4.For deletion at end.\n5.To display.\n6.To exit\n");
         scanf("%d", &choice);
 
         switch (choice)
@@ -46,14 +47,22 @@ int main()
 
         case 5:
             displaylist();
-            exit(0);
+
+        case 6:
+            goto end;
 
         default:
             break;
         }
     }
+end:
 
     printf("After operation the list is : \n");
+    displaylist();
+
+    arranging();
+
+    printf("After arranging the list is : \n");
     displaylist();
 
     return 0;
@@ -192,5 +201,26 @@ void DeleteNodeAtBeginnning()
         head = temp;
 
         printf("Data deleted successfully\n");
+    }
+}
+
+void arranging()
+{
+    int temp;
+    struct node *temp1, *p, *q;
+    p = head;
+    q = head->next;
+
+    while (p != NULL)
+    {
+        while (q != NULL)
+        {
+            if (p->data > q->data)
+            {
+                temp = p->data;
+                p->data = q->data;
+                q->data = temp;
+            }
+        }
     }
 }

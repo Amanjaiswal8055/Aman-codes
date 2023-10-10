@@ -9,15 +9,16 @@ int main()
     printf("Enter the number you want the factorial\n");
     scanf("%d", &num);
 
-    printf("%d", fact(num));
+    printf("factorial of %d is %d\n", num, fact(num));
     return 0;
 }
+
 int fact(int num)
 {
     if (num == 0)
     {
         return 1;
     }
-    int f = num * fact(num - 1);
-    return f;
+
+    return num * fact(num - 1);
 }

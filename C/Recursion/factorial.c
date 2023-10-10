@@ -1,6 +1,6 @@
 #include <stdio.h>
- int factorial(int num)
-// factorial
+
+int factorial(int num)
 {
     if (num == 1 || num == 0)
     {
@@ -11,11 +11,15 @@
         return (num * factorial(num - 1));
     }
 }
+
 int main()
 {
-     int num;
-    printf("enter the number\n");
+    int num;
+
+    printf("enter the number you want the factorial of :\n");
     scanf("%d", &num);
+
     printf("factorial of %d is %d\n", num, factorial(num));
+
     return 0;
 }
