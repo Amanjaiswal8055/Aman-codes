@@ -39,13 +39,7 @@ int main()
             goto exit;
         }
     }
-
 exit:
-
-    printf("Is empty = %d\n", isEmpty());
-    printf("Is full %d\n", isFull());
-
-    printf("Total elements in stack = %d\n",top+1);
 
     return 0;
 }
@@ -64,11 +58,9 @@ void push()
     }
     else
     {
-        top++;
-        stack[top] = data;
+        stack[++top] = data;
     }
 }
-
 int pop()
 {
     int data;
@@ -106,7 +98,6 @@ int isEmpty()
         return 0;
     }
 }
-
 int isFull()
 {
     if (top == size - 1)

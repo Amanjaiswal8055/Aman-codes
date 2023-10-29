@@ -20,13 +20,14 @@ bool Palindrome(char arr[], int length)
     }
     return 1;
 }
+
 int main()
 {
 
     char arr[] = {"Ama22amA"};
     int length = strlen(arr);
 
-    cout << Palindrome(arr, length) << endl;
+    cout << Palindrome(arr, length) << endl << "This is palindrome string" << endl;
 
     return 0;
 }

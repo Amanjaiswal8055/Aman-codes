@@ -1,10 +1,48 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define size 5
+int isEmpty();
+int isFull();
+void enqueue();
+void dequeue();
+void display();
+
+#define size 3
 int queue[size];
 int front = -1;
 int rear = -1;
+
+int main()
+{
+    int n;
+    while (1)
+    {
+        printf("1.To enqueue\n2.To dequeue\n3.To display\n4.To exit\n");
+        scanf("%d", &n);
+
+        switch (n)
+        {
+        case 1:
+            enqueue();
+            break;
+
+        case 2:
+            dequeue();
+            break;
+
+        case 3:
+            display();
+            break;
+
+        case 4:
+            exit(0);
+
+        default:
+            break;
+        }
+    }
+    return 0;
+}
 
 int isEmpty()
 {
@@ -72,36 +110,4 @@ void display()
             printf("Data is %d\n", queue[++count]);
         }
     }
-}
-
-int main()
-{
-    int n;
-    while (1)
-    {
-        printf("1.To enqueue\n2.To dequeue\n3.To display\n4.To exit\n");
-        scanf("%d", &n);
-
-        switch (n)
-        {
-        case 1:
-            enqueue();
-            break;
-
-        case 2:
-            dequeue();
-            break;
-
-        case 3:
-            display();
-            break;
-
-        case 4:
-            exit(0);
-
-        default:
-            break;
-        }
-    }
-    return 0;
 }
