@@ -1,28 +1,34 @@
 #include <iostream>
-
 using namespace std;
 
-int main()
+void bubbleSort(int arr[], int n)
 {
-    // int arr[10] = {123, 6, 5, 10, 89, 20, 1, 23, -32, -55};
-    int arr[10] = {1, 6, 5, 10, 189, 120, 121, 123, 132, 155};
-
-    for (int i = 1; i <= 10; i++)
+    for (int i = 1; i < n; i++)
     {
-        for (int j = 0; j <= 10 - i; j++)
+        for (int j = 0; j < n - i; j++)
         {
             if (arr[j] > arr[j + 1])
             {
-                swap(arr[j], arr[j + 1]);
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
             }
         }
     }
+}
 
-    for (int i = 0; i < 10; i++)
+int main()
+{
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    bubbleSort(arr, n);
+
+    cout << "Sorted array: ";
+    for (int i = 0; i < n; i++)
     {
-        cout << arr[i] << "\t";
+        cout << arr[i] << " ";
     }
-
     cout << endl;
 
     return 0;

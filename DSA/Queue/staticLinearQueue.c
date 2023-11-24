@@ -81,6 +81,7 @@ void enqueue()
     else
     {
         queue[++rear] = data;
+        front = 0;
     }
 }
 void dequeue()
@@ -93,6 +94,12 @@ void dequeue()
     else
     {
         printf("Data removed from queue is %d\n", queue[++front]);
+        if (isEmpty())
+        {
+            front = -1;
+            rear = -1;
+        }
+        
     }
 }
 
