@@ -1,11 +1,11 @@
 #include <iostream>
 using namespace std;
 
-void bubbleSort(int arr[], int n)
+void bubbleSort(int arr[], int size)
 {
-    for (int i = 1; i < n; i++)
+    for (int i = 1; i < size; i++)
     {
-        for (int j = 0; j < n - i; j++)
+        for (int j = 0; j < size - i; j++)
         {
             if (arr[j] > arr[j + 1])
             {
@@ -20,12 +20,12 @@ void bubbleSort(int arr[], int n)
 int main()
 {
     int arr[] = {64, 34, 25, 12, 22, 11, 90};
-    int n = sizeof(arr) / sizeof(arr[0]);
+    int size = sizeof(arr) / sizeof(arr[0]);
 
-    bubbleSort(arr, n);
+    bubbleSort(arr, size);
 
     cout << "Sorted array: ";
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < size; i++)
     {
         cout << arr[i] << " ";
     }

@@ -2,11 +2,7 @@
 
 int main()
 {
-    int n = '*';
-    char  a = 42;
+    int n = 5;
 
-    printf("%d\n",n);
-    printf("%c\n",a);
-    
     return 0;
 }

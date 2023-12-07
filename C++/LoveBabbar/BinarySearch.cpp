@@ -29,30 +29,23 @@ int binarySearch(int arr[], int size, int number)
 
 int main()
 {
-    pair<int ,int> aman;
-    aman.first = 12;
-    aman.second = 55;
+    int size , search;
 
-    cout << aman.first << endl;
-    cout << aman.second << endl;
+    cout << "Enter total number of elements in array" << endl;
+    cin >> size;
 
-    // int size , search;
+    int arr[size];
 
-    // cout << "Enter total number of elements in array" << endl;
-    // cin >> size;
+    for (int i = 0; i < size; i++)
+    {
+        cout << "Enter the value at index " << i << endl;
+        cin >> arr[i];
+    }
 
-    // int arr[size];
+    cout << "Enter element to search in array" << endl;
+    cin >> search;
 
-    // for (int i = 0; i < size; i++)
-    // {
-    //     cout << "Enter the value at index " << i << endl;
-    //     cin >> arr[i];
-    // }
-
-    // cout << "Enter element to search in array" << endl;
-    // cin >> search;
-
-    // binarySearch(arr, size, search);
+    binarySearch(arr, size, search);
 
     return 0;
 }

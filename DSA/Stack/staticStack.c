@@ -4,8 +4,8 @@
 void push();
 int pop();
 void display();
-int isEmpty();
-int isFull();
+bool isEmpty();
+bool isFull();
 
 #define size 8
 
@@ -87,7 +87,7 @@ void display()
     printf("\n");
 }
 
-int isEmpty()
+bool isEmpty()
 {
     if (top == -1)
     {
@@ -98,7 +98,7 @@ int isEmpty()
         return 0;
     }
 }
-int isFull()
+bool isFull()
 {
     if (top == size - 1)
     {

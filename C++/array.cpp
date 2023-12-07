@@ -1,34 +1,38 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
 int main()
 {
-    int T;
-    cin >> T;
+    vector<int> arr = {15, 62, 8, 43, 859, 86};
 
-    while (T--)
+    int length = arr.size();
+
+    int rotation;
+    cout << "Enter number of rotations: ";  
+    cin >> rotation;
+
+    rotation = rotation % length;
+    
+    while(rotation)
     {
-        int N;
-        cin >> N;
+        int temp = arr[length - 1];
 
-        int arr[N];
-        for (int i = 0; i < N; i++)
+        for(int i = length - 1; i > 0; i--)
         {
-            cin >> arr[i];
+            arr[i] = arr[i - 1];
         }
 
-        for (int i = 0; i < N; i++)
-        {
-            if (arr[i] > arr[i + 1])
-            {
-                cout << "No";
-                goto end;
-            }
-        }
-        cout << "Yes";
-    end:
-        cout << endl;
+        arr[0] = temp;
+        rotation--;
     }
 
+    for(int i = 0; i < length; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    
     return 0;
 }
