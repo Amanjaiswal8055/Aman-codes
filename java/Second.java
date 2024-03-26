@@ -1,7 +1,12 @@
 public class Second {
-    public static void main(String[] args){
-        Main mybike = new Main();
+    int c = 100;
 
-         mybike.speed(120);
+    public static void main(String[] args) {
+        Student mybike = new Student();
+        Second x = new Second();
+
+        System.out.println(x.c);
+
+        System.out.println(mybike.age);
     }
 }
