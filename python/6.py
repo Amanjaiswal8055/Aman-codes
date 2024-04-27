@@ -28,3 +28,5 @@ if index != -1:
     print(f"Target {target} found at index {index}.")
 else:
     print(f"Target {target} not found in the array.")
+
+print((10+2)/5)

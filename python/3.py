@@ -15,4 +15,4 @@ exponent = int(input("Enter the exponent: "))
 result = power(base, exponent)
 
 # Printing the result
-print(f"{base} raised to the power of {exponent} is: {result}")
+print(f"{base} raised to the power of ",exponent," is: {result}")
